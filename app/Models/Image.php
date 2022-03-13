@@ -18,8 +18,29 @@ class Image extends Model
         'picture'
     ];
 
-    public function images ()
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'user_id',
+        'category_id',
+    ];
+
+    /**
+     * Get the user that owns the image.
+     */
+    public function user()
     {
-        return $this->hasMany(Image::class);
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the category that owns the image.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

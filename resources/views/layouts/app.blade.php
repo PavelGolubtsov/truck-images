@@ -18,8 +18,39 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-size: 14pt;
+        }
         .container{
             margin-top: 1rem;
+        }
+        .container-left{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container-page{
+            margin: 1.5rem 0;
+        }
+        .container-page-link{
+            width: 300px;
+            border: 1px solid gray;
+        }
+        .container-page-link a{
+            padding: 1rem;
+            display: block;
+            text-decoration: none;
+        }
+        .container-page-categories{
+            display: flex;
+            justify-content: space-around;
+        }
+        .container-page-categories .title{
+            text-align: center;
+        }
+        .container-categories{
+            background-color: white;
         }
     </style>
 </head>
@@ -27,9 +58,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">Главная</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

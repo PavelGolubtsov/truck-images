@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ImagesRequest;
+use App\Models\Image;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +27,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        /*
+        * Gets the data of an authorized user
+        */
+        //$user = User::find(Auth::user()->id);
+
+        /*
+        * Gets the id of the authorized user
+        */
+        $user_id = Auth::user()->id;
+
+        /*
+        * Gets the image data of the authorized user
+        */
+        //$images = Image::where('user_id', $user->id)->get();
+
+        /*
+        * Поулучает данные авторизованного пользователя из связанной таблицы images
+        */
+        $images = User::find($user_id)->images;
+
+        return view('home', compact('images'));
     }
 
     public function imageUpload(ImagesRequest $request)
