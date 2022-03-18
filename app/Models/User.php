@@ -45,8 +45,27 @@ class User extends Authenticatable
     /**
      * Get the images associated with the user.
      */
+    /*
     public function images()
     {
         return $this->hasMany(Image::class);
     }
+    */
+
+    /**
+     * Get the images associated with the user.
+     */
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    /**
+     * Get user owner category.
+     */
+    public function imageCategories()
+    {
+        return $this->hasManyThrough(Image::class, Category::class);
+    }
+
 }

@@ -22,9 +22,11 @@
             margin: 0;
             padding: 0;
             font-size: 14pt;
+            line-height: 1.5;
         }
-        .container{
-            margin-top: 1rem;
+        h1{
+            margin-block-start: 3rem;
+            margin-block-end: 3rem;
         }
         .container-left{
             display: flex;
@@ -49,16 +51,14 @@
         .container-page-categories .title{
             text-align: center;
         }
-        .container-categories{
-            background-color: white;
-        }
     </style>
+    @yield('styles')
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Главная</a>
+                <a class="navbar-brand" href="{{ url('/') }}">Gallery</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

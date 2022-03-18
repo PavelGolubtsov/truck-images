@@ -15,7 +15,25 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
+        'picture',
+        'user_id',
     ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+    ];
+
+    /**
+     * Get the category that owns the image.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * Get the images associated with the category.
@@ -24,4 +42,5 @@ class Category extends Model
     {
         return $this->hasMany(Image::class);
     }
+
 }

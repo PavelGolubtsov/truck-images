@@ -18,8 +18,9 @@ class ImageController extends Controller
     public function imageCreated()
     {
         $categories = Category::get();
+        $selectCategoryId = Category::get()->where('user_id', 1);
 
-        return view('imageCreated', compact('categories'));
+        return view('admin.imageCreated', compact('categories', 'selectCategoryId'));
     }
 
     public function getAllImages()
@@ -31,25 +32,26 @@ class ImageController extends Controller
     public function getImages()
     {
         $user_id = Auth::user()->id;
-        $images = Image::where('user_id', $user_id)->get();
+        $images = Image::get();
+        //dd($images);
         return view('getImages', compact('images'));
     }
 
     public function addImages(ImagesRequest $request)
     {
-        $user = User::find(Auth::user()->id);
         $images = new Image();
         $file = $request->file('picture');
         $input = $request->all();
 
         $fileOriginalName = $file->getClientOriginalName();
         $file->storeAs('public/img/images', $fileOriginalName);
-        $images->picture = $fileOriginalName;
+
+        $fileSize = $file->getSize();
 
         $images->name = $input['name'];
         $images->description = $input['description'];
         $images->picture = $fileOriginalName;
-        $images->user_id = $user->id;
+        $images->size = $fileSize;
         $images->category_id = $input['category_id'];
         $images->save();
 

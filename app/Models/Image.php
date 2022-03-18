@@ -15,7 +15,9 @@ class Image extends Model
     protected $fillable = [
         'name',
         'description',
-        'picture'
+        'picture',
+        'size',
+        'category_id',
     ];
 
     /**
@@ -24,23 +26,25 @@ class Image extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'user_id',
-        'category_id',
     ];
 
     /**
      * Get the user that owns the image.
      */
+    /*
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    */
 
     /**
      * Get the category that owns the image.
      */
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
 }
